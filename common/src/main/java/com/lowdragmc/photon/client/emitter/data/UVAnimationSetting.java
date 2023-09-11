@@ -68,8 +68,8 @@ public class UVAnimationSetting extends ToggleGroup {
         int cellSize;
         if (animation == Animation.WholeSheet) {
             cellSize = tiles.getA().intValue() * tiles.getB().intValue();
-            int X = (int) (currentFrame % cellSize);
-            int Y = (int) (currentFrame / cellSize);
+            int X = (int) (currentFrame % tiles.getA().intValue());
+            int Y = (int) (currentFrame / tiles.getA().intValue());
             u0 = X * cellU;
             v0 = Y * cellV;
         } else {
