@@ -412,7 +412,7 @@ LParticle extends Particle {
             quaternion = camera.rotation();
         }
         if(renderMode == RendererSetting.Mode.VerticalXZ){
-            quaternion = camera.rotation();
+            quaternion = new Quaternionf(camera.rotation());
             quaternion.x = 0;
             quaternion.z = 0;
         }
