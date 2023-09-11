@@ -3,6 +3,7 @@ package com.lowdragmc.photon.client.particle;
 import com.lowdragmc.lowdraglib.utils.DummyWorld;
 import com.lowdragmc.photon.client.emitter.IParticleEmitter;
 import com.lowdragmc.photon.client.emitter.PhotonParticleRenderType;
+import com.lowdragmc.photon.client.emitter.data.RendererSetting;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import lombok.Getter;
 import lombok.Setter;
@@ -90,6 +91,8 @@ LParticle extends Particle {
     protected float bounceSpreadRate = 0;
     @Setter @Getter
     protected Supplier<Quaternionf> quaternionSupplier = () -> null;
+    @Setter
+    private RendererSetting.Mode renderMode;
     @Nullable
     private Level realLevel;
     @Setter
@@ -407,6 +410,11 @@ LParticle extends Particle {
         Quaternionf quaternion = this.getQuaternionSupplier().get();
         if (quaternion == null) {
             quaternion = camera.rotation();
+        }
+        if(renderMode == RendererSetting.Mode.VerticalXZ){
+            quaternion = camera.rotation();
+            quaternion.x = 0;
+            quaternion.z = 0;
         }
         if (!(rotation.x == 0 && rotation.y == 0 && rotation.z == 0)) {
             quaternion = new Quaternionf(quaternion);

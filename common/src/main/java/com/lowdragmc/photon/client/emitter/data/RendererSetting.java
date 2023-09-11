@@ -26,6 +26,7 @@ public class RendererSetting {
         Billboard(p -> null),
         Horizontal(0, 90),
         Vertical(0, 0),
+        VerticalXZ(p -> new Quaternionf(0,1,0,1)),
         Speed(p -> {
             var speed = p.getVelocity();
             if (Vector3fHelper.isZero(speed)) return null;
@@ -96,6 +97,7 @@ public class RendererSetting {
     protected final Cull cull = new Cull();
 
     public void setupQuaternion(LParticle emitter, LParticle particle) {
+        particle.setRenderMode(renderMode);
         particle.setQuaternionSupplier(() -> renderMode.quaternion.apply(emitter));
     }
 
