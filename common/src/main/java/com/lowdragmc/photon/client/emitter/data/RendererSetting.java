@@ -27,6 +27,7 @@ public class RendererSetting {
         Horizontal(0, 90),
         Vertical(0, 0),
         VerticalXZ(p -> new Quaternionf(0,1,0,1)),
+        Static(p -> new Quaternionf(0,0,0,1)),
         Speed(p -> {
             var speed = p.getVelocity();
             if (Vector3fHelper.isZero(speed)) return null;

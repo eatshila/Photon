@@ -416,6 +416,12 @@ LParticle extends Particle {
             quaternion.x = 0;
             quaternion.z = 0;
         }
+        if(renderMode == RendererSetting.Mode.Static){
+            quaternion = new Quaternionf(camera.rotation());
+            quaternion.x = 0;
+            quaternion.y = 0;
+            quaternion.z = 0;
+        }
         if (!(rotation.x == 0 && rotation.y == 0 && rotation.z == 0)) {
             quaternion = new Quaternionf(quaternion);
             if (rotation.y != 0) {
